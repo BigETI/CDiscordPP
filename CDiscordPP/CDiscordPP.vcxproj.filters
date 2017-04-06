@@ -50,9 +50,6 @@
     <ClInclude Include="CDiscordPP.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="json.hpp">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="Guild.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>

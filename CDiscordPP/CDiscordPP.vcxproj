@@ -78,7 +78,7 @@
       <PreprocessorDefinitions>CDISCORDPP_LIB;CDISCORDPP_AUDIO;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>CDiscordPP.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>C:\libs\curl-7.53.1\include;C:\libs\opus-1.1.4\include;C:\Program Files (x86)\OpenAL 1.1 SDK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>./libs/WINx86D/libcurld.lib;./libs/WINx86D/opus.lib;C:\Program Files (x86)\OpenAL 1.1 SDK\libs\Win32\OpenAL32.lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.14393.0\um\x86\WS2_32.Lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.14393.0\um\x86\Crypt32.Lib;C:\Program Files (x86)\Windows Kits\10\Lib\10.0.14393.0\um\x86\Wldap32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -89,7 +89,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\libs\curl-7.53.1\include;C:\libs\opus-1.1.4\include;C:\Program Files (x86)\OpenAL 1.1 SDK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>CDiscordPP.h</PrecompiledHeaderFile>
       <PreprocessorDefinitions>CDISCORDPP_LIB;CDISCORDPP_AUDIO;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -105,7 +105,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\libs\curl-7.53.1\include;C:\libs\opus-1.1.4\include;C:\Program Files (x86)\OpenAL 1.1 SDK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>CDISCORDPP_LIB;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>CDiscordPP.h</PrecompiledHeaderFile>
@@ -126,7 +126,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\libs\curl-7.53.1\include;C:\libs\opus-1.1.4\include;C:\Program Files (x86)\OpenAL 1.1 SDK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>CDISCORDPP_LIB;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>CDiscordPP.h</PrecompiledHeaderFile>
@@ -161,7 +161,6 @@
     <ClInclude Include="ctpl_stl.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Guild.h" />
-    <ClInclude Include="json.hpp" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Role.h" />
     <ClInclude Include="User.h" />

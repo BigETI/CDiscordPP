@@ -6,8 +6,8 @@
 #	include <vector>
 //#	include <thread>
 #	include <future>
-#	include "./ctpl_stl.h"
-#	include "./json.hpp"
+#	include <ctpl_stl.h>
+#	include <json.hpp>
 
 #	define EXTERN_C	extern "C"
 #	if defined __CYGWIN__ || WIN32 || defined _WIN32 || defined __WIN32_
