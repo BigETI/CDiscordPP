@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioPlayer.cpp" />
+    <ClCompile Include="AudioStream.cpp" />
     <ClCompile Include="CDiscordPPPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -155,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioPlayer.h" />
+    <ClInclude Include="AudioStream.h" />
     <ClInclude Include="CDiscordPP.h" />
     <ClInclude Include="Channel.h" />
     <ClInclude Include="Connector.h" />

@@ -42,6 +42,9 @@
     <ClCompile Include="AudioPlayer.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="AudioStream.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Connector.h">
@@ -75,6 +78,9 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="AudioPlayer.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioStream.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

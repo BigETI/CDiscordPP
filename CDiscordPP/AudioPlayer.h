@@ -11,6 +11,9 @@ namespace CDiscordPP
 	private:
 		ALCcontext *context;
 		ALCdevice *device;
+		Queue<AudioStream *> audio_queue;
+		std::mutex mtx;
+		bool is_playing;
 
 		AudioPlayer(const AudioPlayer &);
 		AudioPlayer & operator = (const AudioPlayer &);
@@ -21,8 +24,11 @@ namespace CDiscordPP
 		static Array<String> GetDeviceNames();
 		void UpdateContext();
 		void SetDevice(String device_name);
+		void AddStreamToQueue(InputStream & stream);
+		void AddFileToQueue(String file_name);
 		void Play();
-		void Pause();
+		void Stop();
+		bool IsPlaying();
 	};
 }
 

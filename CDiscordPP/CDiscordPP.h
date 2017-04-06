@@ -1,6 +1,7 @@
 #ifndef __CDISCORDPP_H__
 #	define __CDISCORDPP_H__
 
+#	include <fstream>
 #	include <string>
 #	include <cstdint>
 #	include <vector>
@@ -38,6 +39,10 @@ namespace CDiscordPP
 	//using Thread = std::thread;
 	template < class _T > using Future = std::future<typename _T>;
 	template < class _T > using Array = std::vector<typename _T>;
+	template < class _T > using Queue = std::queue<typename _T>;
+	using InputStream = std::istream;
+	using InputFileStream = std::ifstream;
+	using Mutex = std::mutex;
 
 	template < class _T > class Entity;
 	class Connector;
@@ -49,6 +54,7 @@ namespace CDiscordPP
 	class VoiceChannel;
 #	ifdef CDISCORDPP_AUDIO
 	class AudioPlayer;
+	class AudioStream;
 #	endif
 }
 
@@ -62,6 +68,7 @@ namespace CDiscordPP
 #	include "./VoiceChannel.h"
 #	ifdef CDISCORDPP_AUDIO
 #		include "./AudioPlayer.h"
+#		include "./AudioStream.h"
 #	endif
 
 EXTERN_C namespace CDiscordPP
@@ -69,7 +76,6 @@ EXTERN_C namespace CDiscordPP
 	static Connector *Instantiate(String api_key);
 	CDISCORDPP_DLL_IMPORT void OnStart();
 	CDISCORDPP_DLL_IMPORT void OnChatMessage(String message_id);
-
 }
 
 #endif

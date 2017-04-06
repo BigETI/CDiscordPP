@@ -4,13 +4,31 @@
 
 using namespace CDiscordPP;
 
-CDiscordPP::AudioPlayer::AudioPlayer() : context(nullptr), device(nullptr)
+void audio_queue_player(AudioPlayer *player)
+{
+	ALuint source;
+	alGenSources(1, &source);
+	alSourcef(source, AL_PITCH, 1.0f);
+	alSourcef(source, AL_GAIN, 1.0f);
+	alSource3f(source, AL_POSITION, 0.0f, 0.0f, 0.0f);
+	alSource3f(source, AL_VELOCITY, 0.0f, 0.0f, 0.0f);
+	alSourcei(source, AL_LOOPING, AL_FALSE);
+	ALuint buffer;
+	alGenBuffers(1, &buffer);
+	alSourcePlay(source);
+	while (player->IsPlaying())
+	{
+
+	}
+}
+
+CDiscordPP::AudioPlayer::AudioPlayer() : context(nullptr), device(nullptr), is_playing(false)
 {
 	device = alcOpenDevice(nullptr);
 	UpdateContext();
 }
 
-AudioPlayer::AudioPlayer(String device) : context(nullptr), device(nullptr)
+AudioPlayer::AudioPlayer(String device) : context(nullptr), device(nullptr), is_playing(false)
 {
 	SetDevice(device);
 }
@@ -57,21 +75,38 @@ void CDiscordPP::AudioPlayer::SetDevice(String device_name)
 	UpdateContext();
 }
 
-void CDiscordPP::AudioPlayer::Play()
+void CDiscordPP::AudioPlayer::AddStreamToQueue(InputStream & stream)
 {
-	ALuint source;
-	alGenSources(1, &source);
-	alSourcef(source, AL_PITCH, 1.0f);
-	alSourcef(source, AL_GAIN, 1.0f);
-	alSource3f(source, AL_POSITION, 0.0f, 0.0f, 0.0f);
-	alSource3f(source, AL_VELOCITY, 0.0f, 0.0f, 0.0f);
-	alSourcei(source, AL_LOOPING, AL_FALSE);
-	ALuint buffer;
-	alGenBuffers(1, &buffer);
-	alSourcePlay(source);
+	mtx.lock();
+	try
+	{
+		audio_queue.push(new AudioStream(stream));
+	}
+	catch (...)
+	{
+		//
+	}
+	mtx.unlock();
 }
 
-void CDiscordPP::AudioPlayer::Pause()
+void CDiscordPP::AudioPlayer::AddFileToQueue(String file_name)
 {
-	//
+	InputFileStream ifs(file_name, std::ios::in);
+	AddStreamToQueue(ifs);
+}
+
+void CDiscordPP::AudioPlayer::Play()
+{
+	is_playing = true;
+	std::async(audio_queue_player, this);
+}
+
+void CDiscordPP::AudioPlayer::Stop()
+{
+	is_playing = true;
+}
+
+bool CDiscordPP::AudioPlayer::IsPlaying()
+{
+	return is_playing;
 }
