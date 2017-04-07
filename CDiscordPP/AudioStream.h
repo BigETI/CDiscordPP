@@ -6,15 +6,19 @@ namespace CDiscordPP
 	class AudioStream
 	{
 	private:
-		Array<int8_t> data;
+		SharedPointer<InputStream> stream;
+		Mutex mtx;
 
 		AudioStream();
 		AudioStream(const AudioStream &);
 		AudioStream & operator = (const AudioStream &);
 
 	public:
-		AudioStream(InputStream & stream);
-		
+		AudioStream(SharedPointer<InputStream> _stream);
+		~AudioStream();
+		void LockThread();
+		void UnlockThread();
+		Array<int8_t> & GetData(Array<int8_t> & data, size_t request_len);
 	};
 }
 

@@ -1,18 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.12
+VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CDiscordPP", "CDiscordPP\CDiscordPP.vcxproj", "{6CCC40DA-987E-475C-879E-20C316699E9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug Lib|x64 = Debug Lib|x64
+		Debug Lib|x86 = Debug Lib|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CCC40DA-987E-475C-879E-20C316699E9B}.Debug Lib|x64.ActiveCfg = Debug Lib|x64
+		{6CCC40DA-987E-475C-879E-20C316699E9B}.Debug Lib|x64.Build.0 = Debug Lib|x64
+		{6CCC40DA-987E-475C-879E-20C316699E9B}.Debug Lib|x86.ActiveCfg = Debug Lib|Win32
+		{6CCC40DA-987E-475C-879E-20C316699E9B}.Debug Lib|x86.Build.0 = Debug Lib|Win32
 		{6CCC40DA-987E-475C-879E-20C316699E9B}.Debug|x64.ActiveCfg = Debug|x64
 		{6CCC40DA-987E-475C-879E-20C316699E9B}.Debug|x64.Build.0 = Debug|x64
 		{6CCC40DA-987E-475C-879E-20C316699E9B}.Debug|x86.ActiveCfg = Debug|Win32

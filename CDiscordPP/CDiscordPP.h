@@ -5,23 +5,28 @@
 #	include <string>
 #	include <cstdint>
 #	include <vector>
-//#	include <thread>
+#	include <thread>
 #	include <future>
 #	include <ctpl_stl.h>
 #	include <json.hpp>
 
 #	define EXTERN_C	extern "C"
-#	if defined __CYGWIN__ || WIN32 || defined _WIN32 || defined __WIN32_
-#		ifdef __GNUC__
-#			define CDISCORDPP_DLL_EXPORT	__attribute__ ((dllexport))
-#			define CDISCORDPP_DLL_IMPORT	__attribute__ ((dllimport))
-#		else
-#			define CDISCORDPP_DLL_EXPORT	__declspec(dllexport)
-#			define CDISCORDPP_DLL_IMPORT	__declspec(dllimport)
-#		endif
+#	ifdef CDISCORDPP_STATIC_LIB
+#		define CDISCORDPP_DLL_EXPORT
+#		define CDISCORDPP_DLL_IMPORT
 #	else
-#		define	CDISCORDPP_DLL_EXPORT
-#		define	CDISCORDPP_DLL_IMPORT
+#		if defined __CYGWIN__ || WIN32 || defined _WIN32 || defined __WIN32_
+#			ifdef __GNUC__
+#				define CDISCORDPP_DLL_EXPORT	__attribute__ ((dllexport))
+#				define CDISCORDPP_DLL_IMPORT	__attribute__ ((dllimport))
+#			else
+#				define CDISCORDPP_DLL_EXPORT	__declspec(dllexport)
+#				define CDISCORDPP_DLL_IMPORT	__declspec(dllimport)
+#			endif
+#		else
+#			define	CDISCORDPP_DLL_EXPORT
+#			define	CDISCORDPP_DLL_IMPORT
+#		endif
 #	endif
 
 #	ifdef CDISCORDPP_LIB
@@ -36,12 +41,13 @@ namespace CDiscordPP
 	using JSON = nlohmann::json;
 	using String = std::wstring;
 	using ANSIString = std::string;
-	//using Thread = std::thread;
+	using Thread = std::thread;
 	template < class _T > using Future = std::future<typename _T>;
 	template < class _T > using Array = std::vector<typename _T>;
 	template < class _T > using Queue = std::queue<typename _T>;
 	using InputStream = std::istream;
 	using InputFileStream = std::ifstream;
+	template < class _T > using SharedPointer = std::shared_ptr<typename _T>;
 	using Mutex = std::mutex;
 
 	template < class _T > class Entity;
@@ -73,7 +79,9 @@ namespace CDiscordPP
 
 EXTERN_C namespace CDiscordPP
 {
-	static Connector *Instantiate(String api_key);
+	extern void BeginSession(String bot_token);
+	extern Thread *BeginSessionThread(String bot_token);
+
 	CDISCORDPP_DLL_IMPORT void OnStart();
 	CDISCORDPP_DLL_IMPORT void OnChatMessage(String message_id);
 }

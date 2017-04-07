@@ -24,7 +24,7 @@ namespace CDiscordPP
 		static Array<String> GetDeviceNames();
 		void UpdateContext();
 		void SetDevice(String device_name);
-		void AddStreamToQueue(InputStream & stream);
+		void AddStreamToQueue(SharedPointer<InputStream> stream);
 		void AddFileToQueue(String file_name);
 		void Play();
 		void Stop();

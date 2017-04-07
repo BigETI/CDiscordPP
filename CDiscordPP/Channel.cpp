@@ -37,15 +37,21 @@ Message *Channel::GetMessageObject(const JSON & json)
 	Message *ret = nullptr;
 	if (json.is_object())
 	{
-
 		if (json.at("id").is_string() && json.at("channel_id").is_string())
 		{
 			ANSIString t = json.at("channel_id");
 			ID channel_id(stoll(t));
 			if (channel_id == GetID())
 			{
-				t = json.at("id");
-				ret = new Message(stoll(t), this);
+				t = json.at("id").get<ANSIString>();
+				try
+				{
+					ret = new Message(stoll(t), this);
+				}
+				catch (...)
+				{
+					//
+				}
 			}
 		}
 	}

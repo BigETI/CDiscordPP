@@ -75,7 +75,7 @@ void CDiscordPP::AudioPlayer::SetDevice(String device_name)
 	UpdateContext();
 }
 
-void CDiscordPP::AudioPlayer::AddStreamToQueue(InputStream & stream)
+void CDiscordPP::AudioPlayer::AddStreamToQueue(SharedPointer<InputStream> stream)
 {
 	mtx.lock();
 	try
@@ -91,8 +91,17 @@ void CDiscordPP::AudioPlayer::AddStreamToQueue(InputStream & stream)
 
 void CDiscordPP::AudioPlayer::AddFileToQueue(String file_name)
 {
-	InputFileStream ifs(file_name, std::ios::in);
-	AddStreamToQueue(ifs);
+	try
+	{
+		SharedPointer<InputStream> is(new InputFileStream(file_name, std::ios::in));
+		if (is)
+			AddStreamToQueue(is);
+	}
+	catch (...)
+	{
+		//
+	}
+	
 }
 
 void CDiscordPP::AudioPlayer::Play()
